@@ -11,9 +11,7 @@ def show
 end
 
 def create
-  #create author in memor with sanitized params
-  author = Book.new(book_params)
-  #try to save to DB
+  book = Book.new(book_params)
   if(book.save)
     render json: book
   else 
@@ -38,7 +36,7 @@ end
 private
 
 def book_params
-  params.require(:book).permit(:name, :genre)
+  params.require(:book).permit(:title, :genre)
 end 
 
 def set_book
